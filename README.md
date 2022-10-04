@@ -1,1 +1,0 @@
-# rotadomosquito-frontend-web
