@@ -123,7 +123,7 @@ const MenuLateral: React.FC<ParentCompProps> = (props) => {
             <Center w='350px' bg='grey.700'>
                 <VStack>
                     <Box mb={30} w={'300px'}>
-                        <Image src='../public/assets/images/icon_logo.png' alt='Rota do mosquito' />
+                        <Image src='/assets/images/icon_logo.png' alt='Rota do mosquito' />
                     </Box>
                     <HStack>
                         <Input
