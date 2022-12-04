@@ -24,6 +24,7 @@
     "plugins": ["react", "react-hooks", "@typescript-eslint", "prettier"],
     "ignorePatterns": ["*.svg", "*.png"],
     "rules": {
+      "camelcase": "off",
       "func-names": "off",
       "react/jsx-props-no-spreading": "off",
       "@typescript-eslint/no-explicit-any": "off",

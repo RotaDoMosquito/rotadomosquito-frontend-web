@@ -1,75 +1,40 @@
-import { useEffect, useState } from 'react';
-import { MapContainer, TileLayer, CircleMarker, Popup } from 'react-leaflet';
+import { MapContainer, TileLayer } from 'react-leaflet';
 
-import { Text } from '@chakra-ui/react';
+import { Text, Spinner } from '@chakra-ui/react';
 
-type PositionType = {
-  position: {
-    lat: number;
-    lng: number;
-  };
-};
+import Icon from './components/Icons/Icon';
+import { PositionType } from './types/map';
 
-const redOptions = { color: 'red' };
-const fillBlueOptions = { fillColor: 'blue' };
+const position = { lat: -25.7511, lng: -53.0606 };
 
-function IconConfirmado({ position }: PositionType) {
-  return (
-    <CircleMarker className="" center={position} pathOptions={fillBlueOptions} radius={20}>
-      <Popup>Casos confirmados</Popup>
-    </CircleMarker>
-  );
+export interface MarkProps extends PositionType {
+  situacao: number;
+}
+interface Props {
+  isLoading: boolean;
+  isFetching: boolean;
+  error: unknown;
+  data: MarkProps[] | undefined;
 }
 
-function IconNaoConfirmado({ position }: PositionType) {
+export default function Map({ isLoading, isFetching, error, data }: Props) {
+  if (!isFetching && isLoading) {
+    return null;
+  }
+
+  if (isLoading) {
+    return <Spinner color="white" />;
+  }
+
+  if (error) {
+    return <Text>Ops, algo deu errado!</Text>;
+  }
+
+  if (!data) {
+    return <Text>Nenhum dado encontrado!</Text>;
+  }
+
   return (
-    <CircleMarker center={position} pathOptions={redOptions} radius={20}>
-      <Popup>Casos não confirmados</Popup>
-    </CircleMarker>
-  );
-}
-
-export default function Map() {
-  const [marks, setMarks] = useState<JSX.Element[]>([]);
-
-  useEffect(() => {
-    const marcadores = [] as JSX.Element[];
-
-    async function buscarCasos() {
-      const request = await fetch('http://localhost:8080/dados?cidade=Dois Vizinhos')
-        .then(r => r.json())
-        .then(jsonBody => {
-          console.log(`[DT_OCORRENCIA] ${jsonBody.listDados[0].dtOcorrencia}`);
-
-          const length = parseInt(jsonBody.listDados.length);
-
-          for (let i = 0; i < length; i++) {
-            const situacao = parseInt(jsonBody.listDados[i].fgSituacao);
-
-            if (jsonBody.listDados[i].dsLatitude != null && jsonBody.listDados[i].dsLongitude != null) {
-              const lat = jsonBody.listDados[i].dsLatitude as number;
-              const lng = jsonBody.listDados[i].dsLongitude as number;
-
-              const position = {
-                lat,
-                lng,
-              };
-
-              marcadores.push(
-                situacao === 1 ? <IconConfirmado position={position} /> : <IconNaoConfirmado position={position} />,
-              );
-            }
-          }
-        });
-    }
-
-    buscarCasos();
-    setMarks(marcadores);
-  }, []);
-
-  const position = { lat: -25.7511, lng: -53.0606 };
-
-  return marks ? (
     <MapContainer center={position} zoom={13.5} scrollWheelZoom={false} style={{ height: '100vh', width: '100wh' }}>
       <TileLayer
         attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
@@ -77,10 +42,10 @@ export default function Map() {
       />
       <>
         {/* TODO: Renderizar marcadores */}
-        {marks}
+        {data.map(markProp => (
+          <Icon {...markProp} />
+        ))}
       </>
     </MapContainer>
-  ) : (
-    <Text>Carregando valores...</Text>
   );
 }

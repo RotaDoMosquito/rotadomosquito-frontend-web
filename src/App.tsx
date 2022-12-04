@@ -1,14 +1,18 @@
 import { ChakraProvider } from '@chakra-ui/react';
 
-import Map from './Map';
-import MenuLateral from './components/MenuLateral';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 
 import 'leaflet/dist/leaflet.css';
+import Home from './pages/Home';
+
+const queryClient = new QueryClient();
 
 export default function () {
   return (
-    <ChakraProvider>
-      <MenuLateral childComp={<Map />} />
-    </ChakraProvider>
+    <QueryClientProvider client={queryClient}>
+      <ChakraProvider>
+        <Home />
+      </ChakraProvider>
+    </QueryClientProvider>
   );
 }

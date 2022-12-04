@@ -1,0 +1,53 @@
+{
+  "nome_cidade": "Dois Vizinhos",
+  "suspeitas": "BASTANTE",
+  "confirmados": 29,
+  "quantidade_total": 550,
+  "bairros": [
+    {
+      "id": 1,
+      "nome": "Bairro das Torres",
+      "numero_casos": 50
+    },
+    {
+      "id": 2,
+      "nome": "Colina",
+      "numero_casos": 40
+    },
+    {
+      "id": 3,
+      "nome": "Esperança",
+      "numero_casos": 35
+    },
+    {
+      "id": 4,
+      "nome": "Meredik",
+      "numero_casos": 30
+    },
+    {
+      "id": 5,
+      "nome": "Margarida Galvan",
+      "numero_casos": 28
+    },
+    {
+      "id": 6,
+      "nome": "Verdes Campos",
+      "numero_casos": 15
+    },
+    {
+      "id": 7,
+      "nome": "Nsa. Senhora de Lourdes",
+      "numero_casos": 10
+    },
+    {
+      "id": 8,
+      "nome": "Centro",
+      "numero_casos": 5
+    },
+    {
+      "id": 9,
+      "nome": "Santa Luiza",
+      "numero_casos": 5
+    }
+  ]
+}
