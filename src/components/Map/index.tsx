@@ -11,13 +11,18 @@ export interface MarkProps extends PositionType {
     situacao: number;
 }
 interface Props {
+    isLoading: boolean;
     isFetching: boolean;
     error: unknown;
     data: MarkProps[] | undefined;
 }
 
-export default function Map({ isFetching, error, data }: Props) {
-    if (isFetching) {
+export default function Map({ isLoading, isFetching, error, data }: Props) {
+    if (!isFetching && isLoading) {
+        return null;
+    }
+
+    if (isLoading) {
         return null;
     }
 
@@ -36,6 +41,7 @@ export default function Map({ isFetching, error, data }: Props) {
                 url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
             />
             <>
+                {/* TODO: Renderizar marcadores */}
                 {data.map(markProp => (
                     <Icon {...markProp} />
                 ))}

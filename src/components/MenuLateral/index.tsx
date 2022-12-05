@@ -28,16 +28,18 @@ export default function MenuLateral({
     return (
         <Flex bgColor="gray.700" h="100vh">
             <Center w={searchBarWidth} bg="grey.700">
-                <VStack>
-                    <Box mb={30} w="300px">
+                <Flex flexDirection="column" maxW={600}>
+                    <Box mb={30}>
                         <Image src="/assets/images/icon_logo.png" alt="Rota do mosquito" />
                     </Box>
-                    <HStack>
+                    <HStack mx={5}>
                         <Input ref={inputRef} placeholder="Pesquisar cidade" bgColor="white" />
                         <IconButton aria-label="Search database" icon={searchBarIcon} onClick={handleClickSearch} />
                     </HStack>
-                    {!isFindingData && isDataAvailable ? <TabelaInformacoes /> : <Box boxSize={600} />}
-                </VStack>
+                    <Box flex={1} visibility={!isFindingData && isDataAvailable ? 'visible' : 'hidden'}>
+                        <TabelaInformacoes />
+                    </Box>
+                </Flex>
             </Center>
             <Box alignSelf="center" textAlign="center" flex="1">
                 {children}
