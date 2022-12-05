@@ -36,7 +36,6 @@ export default function Map({ isFetching, error, data }: Props) {
                 url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
             />
             <>
-                {/* TODO: Renderizar marcadores */}
                 {data.map(markProp => (
                     <Icon {...markProp} />
                 ))}
