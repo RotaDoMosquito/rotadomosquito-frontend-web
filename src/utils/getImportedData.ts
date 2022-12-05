@@ -1,6 +1,5 @@
 import { MarkProps } from '../Map';
 import importer from '../services/importer';
-import { PositionType } from '../types/map';
 
 export interface DataResponse {
     dsLatitude: string;

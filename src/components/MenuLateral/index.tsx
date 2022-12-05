@@ -1,4 +1,4 @@
-import { PropsWithChildren, useRef } from 'react';
+import { PropsWithChildren } from 'react';
 
 import { IconButton, Image, Input } from '@chakra-ui/react';
 import { Box, Center, Flex, HStack, VStack } from '@chakra-ui/layout';
