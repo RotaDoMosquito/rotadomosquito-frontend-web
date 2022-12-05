@@ -1,6 +1,6 @@
-import { PositionType } from '../../../types/map';
-import IconConfirmado from '../IconConfirmado';
-import IconNaoConfirmado from '../IconNaoConfirmado';
+import { PositionType } from '../../types/map';
+import IconConfirmado from './IconConfirmado';
+import IconNaoConfirmado from './IconNaoConfirmado';
 
 interface Props extends PositionType {
     situacao: number;

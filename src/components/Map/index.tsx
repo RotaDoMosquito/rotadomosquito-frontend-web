@@ -2,8 +2,8 @@ import { MapContainer, TileLayer } from 'react-leaflet';
 
 import { Text, Spinner } from '@chakra-ui/react';
 
-import Icon from './components/Icons/Icon';
-import { PositionType } from './types/map';
+import Icon from '../Icons';
+import { PositionType } from '../../types/map';
 
 const position = { lat: -25.7511, lng: -53.0606 };
 
