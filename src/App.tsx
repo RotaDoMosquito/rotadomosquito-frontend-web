@@ -8,11 +8,11 @@ import Home from './pages/Home';
 const queryClient = new QueryClient();
 
 export default function () {
-  return (
-    <QueryClientProvider client={queryClient}>
-      <ChakraProvider>
-        <Home />
-      </ChakraProvider>
-    </QueryClientProvider>
-  );
+    return (
+        <QueryClientProvider client={queryClient}>
+            <ChakraProvider>
+                <Home />
+            </ChakraProvider>
+        </QueryClientProvider>
+    );
 }
