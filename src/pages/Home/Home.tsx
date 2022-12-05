@@ -3,8 +3,7 @@ import Map from '../../components/Map';
 import useLogic from './Home.logic';
 
 export default function Home() {
-    const { data, isDataAvailable, inputRef, handleClickSearch, isFindingData, isFetching, isLoading, error } =
-        useLogic();
+    const { data, isDataAvailable, inputRef, handleClickSearch, isFindingData, isFetching, error } = useLogic();
 
     return (
         <MenuLateral
@@ -12,8 +11,9 @@ export default function Home() {
             inputRef={inputRef}
             handleClickSearch={handleClickSearch}
             isFindingData={isFindingData}
+            isFetching={isFetching}
         >
-            <Map isFetching={isFetching} isLoading={isLoading} error={error} data={data} />
+            <Map isFetching={isFetching} error={error} data={data} />
         </MenuLateral>
     );
 }

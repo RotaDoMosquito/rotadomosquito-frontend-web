@@ -16,12 +16,12 @@ export default function useLogic() {
         setIsFindingData(false);
     }, [setIsFindingData]);
 
-    const { isLoading, isFetching, error, data } = useQuery(['importedData'], getImportedData(cidade), {
+    const { isFetching, error, data } = useQuery(['importedData'], getImportedData(cidade), {
         enabled: isFindingData,
         onSettled,
     });
 
     const isDataAvailable = !!data;
 
-    return { data, isDataAvailable, inputRef, handleClickSearch, isFindingData, isFetching, isLoading, error };
+    return { data, isDataAvailable, inputRef, handleClickSearch, isFindingData, isFetching, error };
 }

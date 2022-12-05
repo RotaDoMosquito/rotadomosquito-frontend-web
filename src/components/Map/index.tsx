@@ -11,19 +11,14 @@ export interface MarkProps extends PositionType {
     situacao: number;
 }
 interface Props {
-    isLoading: boolean;
     isFetching: boolean;
     error: unknown;
     data: MarkProps[] | undefined;
 }
 
-export default function Map({ isLoading, isFetching, error, data }: Props) {
-    if (!isFetching && isLoading) {
+export default function Map({ isFetching, error, data }: Props) {
+    if (isFetching) {
         return null;
-    }
-
-    if (isLoading) {
-        return <Spinner color="white" />;
     }
 
     if (error) {
