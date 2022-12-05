@@ -1,7 +1,7 @@
 import { useCallback, useRef, useState } from 'react';
 import { useQuery } from '@tanstack/react-query';
 import MenuLateral from '../components/MenuLateral';
-import Map from '../Map';
+import Map from '../components/Map';
 import getImportedData from '../utils/getImportedData';
 
 export default function Home() {
